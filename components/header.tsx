@@ -1,8 +1,7 @@
 "use client"
 
-import { Bell, Search, Sun, Moon } from "lucide-react"
+import { Bell, Sun, Moon } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { useTheme } from "next-themes"
 
@@ -10,16 +9,8 @@ export function Header() {
   const { theme, setTheme } = useTheme()
 
   return (
-    <header className="sticky top-0 z-10 h-16 bg-background/95 backdrop-blur border-b">
+    <header className="sticky top-0 z-10 h-16 bg-background/95 backdrop-blur">
       <div className="flex h-16 items-center justify-between px-6">
-        <div className="flex flex-1">
-          <div className="w-full max-w-md">
-            <div className="relative">
-              <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-              <Input type="search" placeholder="Search..." className="w-full bg-background pl-8 md:w-2/3 lg:w-1/2" />
-            </div>
-          </div>
-        </div>
         <div className="flex items-center space-x-4">
           <Button variant="ghost" size="icon" className="relative">
             <Bell className="h-5 w-5" />

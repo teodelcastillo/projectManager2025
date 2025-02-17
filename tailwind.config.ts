@@ -10,6 +10,9 @@ const config: Config = {
   ],
   theme: {
   	extend: {
+		minHeight: {
+			'90':'90px'
+		},
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
