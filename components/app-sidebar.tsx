@@ -11,7 +11,16 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import { Calendar, Home, ContactRound, Bot, Settings, ListChecks, FolderOpenDot, Users } from "lucide-react"
+import { 
+  Calendar, 
+  Home, 
+  ContactRound, 
+  Bot, 
+  Settings, 
+  ListChecks, 
+  FolderOpenDot, 
+  Users 
+} from "lucide-react"
 
 const navigation = [
   { name: "Dashboard", href: "/dashboard", icon: Home },
