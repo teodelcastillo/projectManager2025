@@ -1,9 +1,10 @@
 "use client"
 
 import type React from "react"
-import { Sidebar } from "@/components/sidebar"
 import { Header } from "@/components/header"
 import { ChatbotPopup } from "@/components/ChatbotPopup"
+import { SidebarProvider, Sidebar, SidebarTrigger } from "@/components/ui/sidebar"
+import { SidebarIcon } from "lucide-react"
 
 export default function DashboardLayout({
   children,
@@ -12,12 +13,19 @@ export default function DashboardLayout({
 }) {
   return (
     <div className="min-h-screen bg-background">
-      <Sidebar />
-      <div className="pl-64">
-        <Header />
-        <main className="min-h-[calc(100vh-4rem)]">{children}</main>
+      <SidebarProvider>
+        <Sidebar />
+        <main className="min-h-[calc(100vh-4rem)] w-full justify-center">
+        <div className="min-w-screen">
+          <div className="container mx-auto flex w-full justify-between ">
+            <SidebarTrigger className="my-auto"/>
+            <Header />
+          </div>
+          {children}
         <ChatbotPopup />
       </div>
+        </main>
+      </SidebarProvider>
     </div>
   )
 }
