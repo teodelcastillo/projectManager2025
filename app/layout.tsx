@@ -7,8 +7,8 @@ import { ThemeProvider } from "@/components/theme-provider"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Law Firm Management System",
-  description: "Manage your law firm's clients, projects, and tasks",
+  title: "Portal general - del Castillo & Asociados",
+  description: "Gestion de clientes, proyectos, y tareas",
     generator: 'v0.dev'
 }
 
