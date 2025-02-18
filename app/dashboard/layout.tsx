@@ -1,11 +1,11 @@
 "use client"
 
 import type React from "react"
-import { Header } from "@/components/header"
-import { ChatbotPopup } from "@/components/ChatbotPopup"
+import { Header } from "@/components/Interface/header"
+import { ChatbotPopup } from "@/components/Chatbot/ChatbotPopup"
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
-import { AppSidebar } from "@/components/app-sidebar"
-import SearchBar from "@/components/SearchBar"
+import { AppSidebar } from "@/components/Interface/app-sidebar"
+import SearchBar from "@/components/Interface/SearchBar"
 
 export default function DashboardLayout({
   children,

@@ -1,6 +1,6 @@
 "use client"
 
-import { ClientList } from "@/components/ClientList"
+import { ClientList } from "@/components/Clients/ClientList"
 
 export default function ClientsPage() {
   return (

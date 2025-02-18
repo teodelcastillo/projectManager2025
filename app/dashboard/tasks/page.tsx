@@ -1,6 +1,6 @@
 "use client"
 
-import { TaskList } from "@/components/TaskList"
+import { TaskList } from "@/components/Tasks/TaskList"
 
 export default function TasksPage() {
   return (

@@ -1,6 +1,6 @@
 "use client"
 
-import { ProjectList } from "@/components/ProjectList"
+import { ProjectList } from "@/components/Projects/ProjectList"
 
 export default function ProjectsPage() {
   return (
