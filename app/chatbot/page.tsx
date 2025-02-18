@@ -1,6 +1,6 @@
 "use client"
 
-import { Chatbot } from "@/components/Chatbot"
+import { Chatbot } from "@/components/Chatbot/Chatbot"
 
 export default function ChatbotPage() {
   return (
