@@ -3,11 +3,12 @@ import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "../ui/card";
 import ClientDialog from "./ClientDialog";
+import { Client } from "@/actions/clients";
 
 // components/ClientCardView.tsx
-export default function ClientCardView({ clients }: { clients: any[] }) {
+export default function ClientCardView({ clients }: { clients: Client[] }) {
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {clients.map((client) => (
           <Card key={client.id}>
             <CardHeader>
@@ -46,4 +47,3 @@ export default function ClientCardView({ clients }: { clients: any[] }) {
       </div>
     )
   }
-  

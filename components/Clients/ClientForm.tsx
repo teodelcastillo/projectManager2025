@@ -1,5 +1,5 @@
 import { Client, updateClient, addClient } from "@/actions/clients";
-import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@radix-ui/react-select";
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "../ui/select";
 import { useState } from "react";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
@@ -65,3 +65,4 @@ export default function ClientForm({ client, closeDialog }: { client?: Client; c
       </form>
     )
   }
+  

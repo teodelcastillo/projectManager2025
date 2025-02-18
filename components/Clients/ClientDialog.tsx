@@ -1,8 +1,7 @@
 import { Client } from "@/actions/clients"
-import { Dialog, DialogTrigger, DialogContent, DialogTitle } from "@radix-ui/react-dialog"
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { useState } from "react"
 import { Button } from "../ui/button"
-import { DialogHeader } from "../ui/dialog"
 import ClientForm from "./ClientForm"
 
 export default function ClientDialog({ client }: { client?: Client }) {
@@ -11,13 +10,13 @@ export default function ClientDialog({ client }: { client?: Client }) {
     return (
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogTrigger asChild>
-          <Button variant={client ? "outline" : "default"} className={client ? "mr-2" : "mb-5"}>
-            {client ? "Edit" : "Add New Client"}
+          <Button variant={client ? "outline" : "default"} className={client ? "mr-2" : ""}>
+            {client ? "Editar" : "Nuevo Cliente"}
           </Button>
         </DialogTrigger>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>{client ? "Editar Cliente" : "Nuevo Cliente"}</DialogTitle>
+            <DialogTitle>{client ? "Edit Client" : "Add New Client"}</DialogTitle>
           </DialogHeader>
           <ClientForm client={client} closeDialog={() => setIsOpen(false)} />
         </DialogContent>
