@@ -1,13 +1,16 @@
-"use client"
+// components/ClientSection.tsx
+"use client";
 
-import { ClientList } from "@/components/Clients/ClientList"
+import { getClients } from "@/actions/clients";
+import ClientView from "@/components/Clients/ClientView"
 
-export default function ClientsPage() {
+export default async function ClientSection() {
+  const clients = await getClients()
+
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-2xl font-bold mb-4">Clients</h1>
-      <ClientList />
+    <div className="container mx-auto py-10">
+      <h1 className="text-2xl font-bold mb-5">Clientes</h1>
+      <ClientView clients={clients} />
     </div>
-  )
+  );
 }
-
