@@ -24,13 +24,13 @@ import {
 
 const navigation = [
   { name: "Dashboard", href: "/dashboard", icon: Home },
-  { name: "Clients", href: "/dashboard/clients", icon: ContactRound },
-  { name: "Projects", href: "/dashboard/projects", icon: FolderOpenDot },
-  { name: "Tasks", href: "/dashboard/tasks", icon: ListChecks },
-  { name: "Users", href: "/dashboard/users", icon: Users },
-  { name: "Chatbot", href: "/dashboard/chatbot", icon: Bot },
-  { name: "Calendario", href: "/dashboard/calendar", icon: Calendar },
-  { name: "Settings", href: "/dashboard/settings", icon: Settings },
+  { name: "Clients", href: "/clients", icon: ContactRound },
+  { name: "Projects", href: "/projects", icon: FolderOpenDot },
+  { name: "Tasks", href: "/tasks", icon: ListChecks },
+  { name: "Users", href: "/users", icon: Users },
+  { name: "Chatbot", href: "/chatbot", icon: Bot },
+  { name: "Calendario", href: "/calendar", icon: Calendar },
+  { name: "Settings", href: "/settings", icon: Settings },
 ]
 
 export function AppSidebar() {
