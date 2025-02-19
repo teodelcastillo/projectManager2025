@@ -2,39 +2,31 @@ import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
-
-type Client = {
-  id: number
-  name: string
-  contact_email: string
-  website: string
-  status: string
-  client_type: "company" | "individual"
-}
+import { Client } from "@/app/models"
+import { getClients, addClient } from "@/actions/clients"
 
 export function ClientList() {
   const [clients, setClients] = useState<Client[]>([])
-  const [newClient, setNewClient] = useState<Partial<Client>>({})
-  const supabase = createClientComponentClient()
+  const [newClient, setNewClient] = useState<Partial<Client>>({
+    name: "",
+    contact_email: "",
+    website: "",
+    client_type: "company",
+  })
 
   useEffect(() => {
+    async function fetchClients() {
+      const data = await getClients()
+      setClients(data)
+    }
     fetchClients()
   }, [])
 
-  async function fetchClients() {
-    const { data, error } = await supabase.from("clients").select("*")
-    if (error) console.error("Error fetching clients:", error)
-    else setClients(data || [])
-  }
-
-  async function addClient() {
-    const { data, error } = await supabase.from("clients").insert([newClient]).select()
-    if (error) console.error("Error adding client:", error)
-    else {
-      setClients([...clients, data[0]])
-      setNewClient({})
-    }
+  const handleAddClient = async () => {
+    if (!newClient.name || !newClient.contact_email) return
+    const addedClient = await addClient(newClient as Client)
+    setClients((prev) => [...prev, addedClient]) // Update list after adding
+    setNewClient({ name: "", contact_email: "", website: "", client_type: "company" }) // Reset form
   }
 
   return (
@@ -42,29 +34,30 @@ export function ClientList() {
       <div className="mb-4 space-y-2">
         <Input
           placeholder="Name"
-          value={newClient.name || ""}
+          value={newClient.name}
           onChange={(e) => setNewClient({ ...newClient, name: e.target.value })}
         />
         <Input
           placeholder="Email"
-          value={newClient.contact_email || ""}
+          type="email"
+          value={newClient.contact_email}
           onChange={(e) => setNewClient({ ...newClient, contact_email: e.target.value })}
         />
         <Input
           placeholder="Website"
-          value={newClient.website || ""}
+          type="url"
+          value={newClient.website}
           onChange={(e) => setNewClient({ ...newClient, website: e.target.value })}
         />
         <select
           className="w-full p-2 border rounded"
-          value={newClient.client_type || ""}
+          value={newClient.client_type}
           onChange={(e) => setNewClient({ ...newClient, client_type: e.target.value as "company" | "individual" })}
         >
-          <option value="">Select Type</option>
           <option value="company">Company</option>
           <option value="individual">Individual</option>
         </select>
-        <Button onClick={addClient}>Add Client</Button>
+        <Button onClick={handleAddClient}>Add Client</Button>
       </div>
       <Table>
         <TableHeader>
@@ -77,18 +70,25 @@ export function ClientList() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {clients.map((client) => (
-            <TableRow key={client.id}>
-              <TableCell>{client.name}</TableCell>
-              <TableCell>{client.contact_email}</TableCell>
-              <TableCell>{client.website}</TableCell>
-              <TableCell>{client.client_type}</TableCell>
-              <TableCell>{client.status}</TableCell>
+          {clients.length > 0 ? (
+            clients.map((client) => (
+              <TableRow key={client.id}>
+                <TableCell>{client.name}</TableCell>
+                <TableCell>{client.contact_email}</TableCell>
+                <TableCell>{client.website}</TableCell>
+                <TableCell>{client.client_type}</TableCell>
+                <TableCell>{client.status}</TableCell>
+              </TableRow>
+            ))
+          ) : (
+            <TableRow>
+              <TableCell colSpan={5} className="text-center">
+                No clients found
+              </TableCell>
             </TableRow>
-          ))}
+          )}
         </TableBody>
       </Table>
     </div>
   )
 }
-

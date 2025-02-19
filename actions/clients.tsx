@@ -1,18 +1,11 @@
 import { createClient } from "@supabase/supabase-js"
+import { Client } from "@/app/models"
 
 // Configure Supabase client
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
-export interface Client {
-  id: number
-  name: string
-  contact_email: string
-  website: string
-  status: "active" | "inactive"
-  client_type: "individual" | "company"
-}
 
 // Fetch all clients
 export async function getClients(): Promise<Client[]> {

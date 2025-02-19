@@ -3,7 +3,7 @@ import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "../ui/card";
 import ClientDialog from "./ClientDialog";
-import { Client } from "@/actions/clients";
+import { Client } from "@/app/models";
 
 // components/ClientCardView.tsx
 export default function ClientCardView({ clients }: { clients: Client[] }) {

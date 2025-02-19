@@ -1,12 +1,13 @@
-// components/ClientView.tsx
+// components/ProjectView.tsx
 import { useState, useEffect } from "react";
-import ClientTable from "./ClientTable";
-import ClientCardView from "./ClientCardView";
+import ProjectTable from "././ProjectTable";
+import ProjectCardView from "./ProjectCardView";
 import { ToggleGroup, ToggleGroupItem } from "../ui/toggle-group";
 import { List, LayoutGrid } from "lucide-react";
-import ClientDialog from "./ClientDialog";
-import { Client } from "@/app/models";
-export default function ClientView({ clients }: { clients: Client[] }) {
+import ProjectDialog from "./ProjectDialog";
+import { Project } from "@/app/models";
+
+export default function ProjectView({ Projects }: { Projects: Project[] }) {
   const [view, setView] = useState<"table" | "card">("table");
 
   // Load view from localStorage on mount
@@ -20,7 +21,7 @@ export default function ClientView({ clients }: { clients: Client[] }) {
   return (
     <>
       <div className="flex justify-between items-center mb-5">
-        <ClientDialog />
+        <ProjectDialog />
         <ToggleGroup
           type="single"
           value={view}
@@ -39,9 +40,9 @@ export default function ClientView({ clients }: { clients: Client[] }) {
         </ToggleGroup>
       </div>
       {view === "table" ? (
-        <ClientTable clients={clients} />
+        <ProjectTable Projects={Projects} />
       ) : (
-        <ClientCardView clients={clients} />
+        <ProjectCardView Projects={Projects} />
       )}
     </>
   );

@@ -1,24 +1,24 @@
-import { Client } from "@/app/models"
+import { Project } from "@/app/models"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { useState } from "react"
 import { Button } from "../ui/button"
-import ClientForm from "./ClientForm"
+import ProjectForm from "./ProjectForm"
 
-export default function ClientDialog({ client }: { client?: Client }) {
+export default function ProjectDialog({ project }: { project?: Project }) {
     const [isOpen, setIsOpen] = useState(false)
   
     return (
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogTrigger asChild>
-          <Button variant={client ? "outline" : "default"} className={client ? "mr-2" : ""}>
-            {client ? "Editar" : "Nuevo Cliente"}
+          <Button variant={project ? "outline" : "default"} className={project ? "mr-2" : ""}>
+            {project ? "Editar" : "Nuevo Projecte"}
           </Button>
         </DialogTrigger>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>{client ? "Edit Client" : "Add New Client"}</DialogTitle>
+            <DialogTitle>{project ? "Edit Project" : "Add New Project"}</DialogTitle>
           </DialogHeader>
-          <ClientForm client={client} closeDialog={() => setIsOpen(false)} />
+          <ProjectForm project={project} closeDialog={() => setIsOpen(false)} />
         </DialogContent>
       </Dialog>
     )

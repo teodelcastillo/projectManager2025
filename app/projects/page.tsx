@@ -1,13 +1,16 @@
-"use client"
+// components/Projectsection.tsx
+"use client";
 
-import { ProjectList } from "@/components/Projects/ProjectList"
+import { getProjects } from "@/actions/projects";
+import ProjectView from "@/components/Projects/ProjectView"
 
-export default function ProjectsPage() {
+export default async function Projectsection() {
+  const Projects = await getProjects()
+
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-2xl font-bold mb-4">Projects</h1>
-      <ProjectList />
+    <div className="container mx-auto py-10">
+      <h1 className="text-2xl font-bold mb-5">Causas </h1>
+      <ProjectView Projects={Projects} />
     </div>
-  )
+  );
 }
-
