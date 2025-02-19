@@ -25,7 +25,7 @@ export function Header() {
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" size="icon" className="rounded-full">
                 <img
-                  src="/placeholder.svg?height=32&width=32"
+                  src="#"
                   alt="Avatar"
                   className="rounded-full"
                   width={32}
