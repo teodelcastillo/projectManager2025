@@ -2,19 +2,19 @@
 import { deleteClient } from "@/actions/clients";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import ClientDialog from "@/components/Clients/ClientDialog"
-import { Button } from "../ui/button";
+import DeleteButton from "./DeleteButton";
 
 export default function ClientTable({ clients }: { clients: any[] }) {
     return (
         <Table>
         <TableHeader>
           <TableRow>
-            <TableHead>Name</TableHead>
+            <TableHead>Nombre</TableHead>
             <TableHead>Email</TableHead>
             <TableHead>Website</TableHead>
-            <TableHead>Status</TableHead>
-            <TableHead>Type</TableHead>
-            <TableHead>Actions</TableHead>
+            <TableHead>Estado</TableHead>
+            <TableHead>Tipo</TableHead>
+            <TableHead>Acciones</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -27,11 +27,7 @@ export default function ClientTable({ clients }: { clients: any[] }) {
               <TableCell>{client.client_type}</TableCell>
               <TableCell>
                 <ClientDialog client={client} />
-                <form action={deleteClient.bind(null, client.id)} className="inline">
-                  <Button variant="destructive" type="submit">
-                    Delete
-                  </Button>
-                </form>
+                <DeleteButton clientId={client.id} clientName={client.name} onDelete={deleteClient} />
               </TableCell>
             </TableRow>
           ))}

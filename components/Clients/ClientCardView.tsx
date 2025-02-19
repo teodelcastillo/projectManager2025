@@ -17,7 +17,7 @@ export default function ClientCardView({ clients }: { clients: Client[] }) {
             </CardHeader>
             <CardContent>
               <p>
-                <strong>Website:</strong>{" "}
+                <strong>Página web:</strong>{" "}
                 <a
                   href={client.website}
                   target="_blank"
@@ -38,7 +38,7 @@ export default function ClientCardView({ clients }: { clients: Client[] }) {
               <ClientDialog client={client} />
               <form action={deleteClient.bind(null, client.id)}>
                 <Button variant="destructive" type="submit">
-                  Delete
+                  Eliminar
                 </Button>
               </form>
             </CardFooter>
